@@ -27,8 +27,8 @@ type token = Toc | Begin | End
 let text t = Text ([], t)
 let concat ts = Concat ([], List.map text ts)
 let toc = concat [ "["; "toc"; "]" ]
-let begin_toc = concat [ "["; "//"; "]: # begin toc" ]
-let end_toc = concat [ "["; "//"; "]: # end toc" ]
+let begin_toc = concat [ "["; "//"; "]: # (begin toc)" ]
+let end_toc = concat [ "["; "//"; "]: # (end toc)" ]
 
 (* [toc] is either:
    - empty; in that case it appears as [toc] in the Markdown file

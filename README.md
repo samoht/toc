@@ -19,7 +19,16 @@ file's table of contents instead.
 
 ```diff
 -[toc]
-+ xxx
++[//]: # (begin toc)
++
++*  Usage
++   *  First Use
++   *  Regenerate TOC
++   *  Options
++   *  Multiple TOC
++*  License
++
++[//]: # (end toc)
 ```
 
 ### Regenerate TOC
