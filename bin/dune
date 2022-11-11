@@ -1,0 +1,4 @@
+(executable
+ (public_name toc)
+ (name main)
+ (libraries omd toc cmdliner logs.cli logs.fmt fmt.tty fmt.cli))
