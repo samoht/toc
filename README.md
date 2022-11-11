@@ -3,7 +3,16 @@
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-[toc]
+[//]: # (begin toc)
+
+*  Usage
+   *  First Use
+   *  Regenerate TOC
+   *  Options
+   *  Multiple TOC
+*  License
+
+[//]: # (end toc)
 
 ## Usage
 
