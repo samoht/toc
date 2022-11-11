@@ -3,16 +3,7 @@
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-[//]: # (begin toc)
-
-*  [Usage](#Usage)
-   *  [First Use](#First-Use)
-   *  [Regenerate TOC](#Regenerate-TOC)
-   *  [Options](#Options)
-   *  [Multiple TOC](#Multiple-TOC)
-*  [License](#License)
-
-[//]: # (end toc)
+[toc]
 
 ## Usage
 
@@ -30,12 +21,12 @@ file's table of contents instead.
 -[toc]
 +[//]: # (begin toc)
 +
-+*  Usage
-+   *  First Use
-+   *  Regenerate TOC
-+   *  Options
-+   *  Multiple TOC
-+*  License
++*  [Usage](#Usage)
++   *  [First Use](#First-Use)
++   *  [Regenerate TOC](#Regenerate-TOC)
++   *  [Options](#Options)
++   *  [Multiple TOC](#Multiple-TOC)
++*  [License](#License)
 +
 +[//]: # (end toc)
 ```
