@@ -24,27 +24,30 @@ let pp = Fmt.of_to_string Omd.to_sexp
 
 type token = Toc | Begin | End
 
+let text t = Text ([], t)
+let concat ts = Concat ([], List.map text ts)
+let toc = concat [ "["; "toc"; "]" ]
+let begin_toc = concat [ "["; "//"; "]: # begin toc" ]
+let end_toc = concat [ "["; "//"; "]: # end toc" ]
+
 (* [toc] is either:
    - empty; in that case it appears as [toc] in the Markdown file
    - expanded: in that case it appears between `[//]: # begin toc` and
      `[//]: # end toc` markers *)
-let is_toc = function
-  | Concat ([], [ Text ([], "["); Text ([], "toc"); Text ([], "]") ]) ->
-      Some Toc
-  | Concat ([], [ Text ([], "["); Text ([], "//"); Text ([], "]: # begin toc") ])
-    ->
-      Some Begin
-  | Concat ([], [ Text ([], "["); Text ([], "//"); Text ([], "]: # end toc") ])
-    ->
-      Some End
-  | _ -> None
+let is_toc s =
+  if s = toc then Some Toc
+  else if s = begin_toc then Some Begin
+  else if s = end_toc then Some End
+  else None
+
+let para t = Paragraph ([], t)
 
 let rec replace ~toc : doc -> doc = function
   | [] -> []
   | (Paragraph (_, x) as h) :: t -> (
       match is_toc x with
       | None -> h :: replace ~toc t
-      | Some Toc -> toc :: replace ~toc t
+      | Some Toc -> para begin_toc :: toc :: para end_toc :: replace ~toc t
       | Some Begin -> h :: toc :: skip_to_end ~toc t
       | Some End -> failwith "malformed toc markers")
   | h :: t -> h :: replace ~toc t
