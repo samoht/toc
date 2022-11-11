@@ -244,8 +244,8 @@ and add_code_block ~first_item_prefix ~prefix buf attr label c =
   nl buf;
   add_prefix ~first_item_prefix ~prefix buf;
   add_string_with_nl_prefix ~first_item_prefix ~prefix buf c;
-  let n = String.length c in
-  if n > 0 && c.[String.length c - 1] <> '\n' then (
+  let n' = String.length c in
+  if n' > 0 && c.[String.length c - 1] <> '\n' then (
     nl buf;
     add_prefix ~first_item_prefix ~prefix buf);
   nchar n buf '`';
