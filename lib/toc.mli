@@ -18,3 +18,6 @@
 
 val expand : ?depth:int -> Omd.doc -> Omd.doc option
 (** Replace [toc] in Markdown files by the result of [Omd.toc] *)
+
+val to_string : Omd.doc -> string
+(** TODO: use upstream [Omd.to_markdown] *)

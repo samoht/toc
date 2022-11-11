@@ -71,3 +71,5 @@ let expand ?depth doc =
       let doc = replace ~toc doc in
       Log.debug (fun l -> l "AFTER: %a" pp doc);
       Some doc
+
+let to_string = Pp_markdown.to_string

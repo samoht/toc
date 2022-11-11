@@ -18,7 +18,13 @@ let main () file =
   let ic = open_in file in
   let doc = Toc.expand (Omd.of_channel ic) in
   close_in ic;
-  ignore doc
+  match doc with
+  | None -> Fmt.pr "No changes.\n%!"
+  | Some doc ->
+      let oc = open_out file in
+      output_string oc (Toc.to_string doc);
+      close_out oc;
+      Fmt.pr "%s has been updated.\n%!" file
 
 let setup style_renderer level =
   Fmt_tty.setup_std_outputs ?style_renderer ();
