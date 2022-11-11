@@ -17,33 +17,6 @@ let sp buf = Buffer.add_char buf ' '
 let add_string_escape_chars b s =
   for i = 0 to String.length s - 1 do
     match s.[i] with
-    | '.' as c ->
-        if
-          i > 0
-          &&
-          match s.[i - 1] with
-          | '0' .. '9' -> i + 1 < String.length s && s.[i + 1] = ' '
-          | _ -> false
-        then Buffer.add_char b '\\';
-        Buffer.add_char b c
-    | '-' as c ->
-        if
-          (i = 0 || match s.[i - 1] with ' ' | '\n' -> true | _ -> false)
-          && i + 1 < String.length s
-          && (s.[i + 1] = ' ' || s.[i + 1] = '-')
-        then Buffer.add_char b '\\';
-        Buffer.add_char b c
-    | '+' as c ->
-        if
-          (i = 0 || match s.[i - 1] with ' ' | '\n' -> true | _ -> false)
-          && i + 1 < String.length s
-          && s.[i + 1] = ' '
-        then Buffer.add_char b '\\';
-        Buffer.add_char b c
-    | '!' as c ->
-        if i + 1 < String.length s && s.[i + 1] = '[' then
-          Buffer.add_char b '\\';
-        Buffer.add_char b c
     | '<' as c ->
         if
           i <> String.length s - 1
@@ -56,9 +29,6 @@ let add_string_escape_chars b s =
         Buffer.add_char b c
     | '#' as c ->
         if i = 0 || s.[i - 1] = '\n' then Buffer.add_char b '\\';
-        Buffer.add_char b c
-    | ('\\' | '[' | ']' | '(' | ')' | '`' | '*') as c ->
-        Buffer.add_char b '\\';
         Buffer.add_char b c
     | c -> Buffer.add_char b c
   done

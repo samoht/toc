@@ -1,9 +1,9 @@
-# TOC \- Manage table of contents in Github Markdown files
+# TOC - Manage table of contents in Github Markdown files
 
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-\[//\]: # begin toc
+[//]: # begin toc
 
 *  Usage
    *  First Use
@@ -12,7 +12,7 @@ Github Markdown files.
    *  Multiple TOC
 *  License
 
-\[//\]: # end toc
+[//]: # end toc
 
 ## Usage
 
