@@ -3,16 +3,7 @@
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-[//]: # begin toc
-
-*  Usage
-   *  First Use
-   *  Regenerate TOC
-   *  Options
-   *  Multiple TOC
-*  License
-
-[//]: # end toc
+[toc]
 
 ## Usage
 
@@ -23,7 +14,8 @@ $ toc README.md
 README.md has been updated.
 ```
 
-This will replace any `[toc]` tokens automatically to include the file's table of contents instead.
+This will replace any `[toc]` tokens automatically to include the
+file's table of contents instead.
 
 ```diff
 -[toc]
