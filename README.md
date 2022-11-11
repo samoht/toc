@@ -1,4 +1,4 @@
-# TOC - Manage table of contents in Github Markdown files
+# TOC \- Manage table of contents in Github Markdown files
 
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
@@ -9,7 +9,17 @@ Github Markdown files.
 
 ### First Use
 
-Use [toc]. It will be automatically expanded.
+```
+$ toc README.md
+README.md has been updated.
+```
+
+This will replace any `[toc]` tokens automatically to include the file's table of contents instead.
+
+```diff
+-[toc]
++ xxx
+```
 
 ### Regenerate TOC
 
