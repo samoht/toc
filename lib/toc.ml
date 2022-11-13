@@ -80,8 +80,8 @@ end
 
 type t = attributes block option
 
-let v ?depth ?(add_links = true) doc : t =
-  match Omd.toc ?depth ~start:[ 1 ] doc with
+let v ?(depth = 10) ?(add_links = true) doc : t =
+  match Omd.toc ~depth ~start:[ 1 ] doc with
   | [] -> None
   | [ toc ] ->
       let toc = if add_links then Linkify.block toc else toc in
