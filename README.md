@@ -3,7 +3,7 @@
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-<div class="toc"\>
+<div class="toc">
 
 *  [Usage](#Usage)
    *  [First Use](#First-Use)
@@ -12,7 +12,7 @@ Github Markdown files.
    *  [Multiple TOC](#Multiple-TOC)
 *  [License](#License)
 
-\</div\>
+</div>
 
 ## Usage
 

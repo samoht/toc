@@ -26,40 +26,37 @@ let pp = Fmt.of_to_string Omd.to_sexp
 type token = Toc | Begin | End
 
 let text t = Text ([], t)
+let html t = Html_block ([], t)
 let concat ts = Concat ([], List.map text ts)
 let toc = concat [ "["; "toc"; "]" ]
-let begin_toc = concat [ "<div class=\"toc\">" ]
-let end_toc = concat [ "</div>" ]
+let begin_toc = "<div class=\"toc\">"
+let end_toc = "</div>"
 
 (* [toc] is either:
    - empty; in that case it appears as [toc] in the Markdown file
    - expanded: in that case it appears between `[//]: # begin toc` and
      `[//]: # end toc` markers *)
-let is_toc s =
-  if s = toc then Some Toc
-  else if s = begin_toc then Some Begin
-  else if s = end_toc then Some End
-  else None
-
-let para t = Paragraph ([], t)
+let is_toc = function
+  | Paragraph (_, x) when x = toc -> Some Toc
+  | Html_block (_, x) when x = begin_toc -> Some Begin
+  | Html_block (_, x) when x = end_toc -> Some End
+  | _ -> None
 
 let rec replace ~toc : doc -> doc = function
   | [] -> []
-  | (Paragraph (_, x) as h) :: t -> (
-      match is_toc x with
+  | h :: t -> (
+      match is_toc h with
       | None -> h :: replace ~toc t
-      | Some Toc -> para begin_toc :: toc :: para end_toc :: replace ~toc t
+      | Some Toc -> html begin_toc :: toc :: html end_toc :: replace ~toc t
       | Some Begin -> h :: toc :: skip_to_end ~toc t
       | Some End -> failwith "malformed toc markers")
-  | h :: t -> h :: replace ~toc t
 
 and skip_to_end ~toc : doc -> doc = function
   | [] -> []
-  | (Paragraph (_, x) as h) :: t -> (
-      match is_toc x with
+  | h :: t -> (
+      match is_toc h with
       | Some End -> h :: replace ~toc t
       | _ -> skip_to_end ~toc t)
-  | _ :: t -> skip_to_end ~toc t
 
 module Id = struct
   (* Convert section title to a valid HTML ID. *)
