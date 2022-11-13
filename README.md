@@ -3,16 +3,7 @@
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-<div class="toc"\>
-
-*  [Usage](#Usage)
-   *  [First Use](#First-Use)
-   *  [Regenerate TOC](#Regenerate-TOC)
-   *  [Options](#Options)
-   *  [Multiple TOC](#Multiple-TOC)
-*  [License](#License)
-
-\</div\>
+[toc]
 
 ## Usage
 
