@@ -19,7 +19,7 @@ let main () file depth print =
   let md = Omd.of_channel ic in
   match print with
   | true ->
-      let toc = Toc.v ~add_links:false md in
+      let toc = Toc.v ~add_links:false ?depth md in
       Fmt.pr "%a%!" Toc.pp toc;
       close_in ic
   | false -> (
