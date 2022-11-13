@@ -3,7 +3,18 @@
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
 
-[toc]
+<div class="toc">
+
+*  [Usage](#Usage)
+   *  [First Use](#First-Use)
+   *  [Regenerate TOC](#Regenerate-TOC)
+   *  [Multiple TOC](#Multiple-TOC)
+   *  [Options](#Options)
+      *  [Print](#Print)
+      *  [Depth](#Depth)
+*  [License](#License)
+
+</div>
 
 ## Usage
 
@@ -20,7 +31,18 @@ This will replace any `[toc]` tokens by the file's table of contents instead.
 
 ```diff
 -[toc]
-+TODO
++<div class="toc">
++
++*  [Usage](#Usage)
++   *  [First Use](#First-Use)
++   *  [Regenerate TOC](#Regenerate-TOC)
++   *  [Multiple TOC](#Multiple-TOC)
++   *  [Options](#Options)
++      *  [Print](#Print)
++      *  [Depth](#Depth)
++*  [License](#License)
++
++</div>
 ```
 
 ### Regenerate TOC
@@ -49,7 +71,14 @@ Use `toc --help` to see all the options.
 
 ```
 $ toc README.md -p
-TODO
+*  Usage
+   *  First Use
+   *  Regenerate TOC
+   *  Multiple TOC
+   *  Options
+      *  Print
+      *  Depth
+*  License
 ```
 
 #### Depth
