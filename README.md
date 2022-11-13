@@ -9,6 +9,8 @@ Github Markdown files.
 
 ### First Use
 
+Run:
+
 ```
 $ toc README.md
 README.md has been updated.
@@ -36,6 +38,13 @@ file's table of contents instead.
 `toc` adds transparent markers at the beginning and end of the generated
 table of contents. The next call to `toc` will regenerate the table of
 contents from scratch.
+
+To regenerate the TOC, run:
+
+```
+$ toc README.md
+README.md has been updated.
+```
 
 ### Options
 
