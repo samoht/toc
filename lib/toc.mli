@@ -21,3 +21,12 @@ val expand : ?depth:int -> Omd.doc -> Omd.doc option
 
 val to_string : Omd.doc -> string
 (** TODO: use upstream [Omd.to_markdown] *)
+
+type t
+(** The type for table of contents. *)
+
+val v : ?depth:int -> Omd.doc -> t
+(** [v md] is [md]'s table of contents. *)
+
+val pp : t Fmt.t
+(** [pp] is the pretty-printer for table of contents. *)

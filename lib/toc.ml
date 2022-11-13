@@ -76,14 +76,16 @@ module Id = struct
     | _ -> failwith "invalid mardkown in TOC"
 end
 
-let toc ?depth doc =
+type t = attributes block option
+
+let v ?depth doc : t =
   match Omd.toc ?depth ~start:[ 1 ] doc with
   | [] -> None
   | [ toc ] -> Some (Id.block toc)
   | _ -> assert false (* this is an invariant in Omd.toc *)
 
 let expand ?depth doc =
-  match toc ?depth doc with
+  match v ?depth doc with
   | None -> None
   | Some toc ->
       Log.info (fun l -> l "TOC=%a" pp [ toc ]);
@@ -93,3 +95,8 @@ let expand ?depth doc =
       Some doc
 
 let to_string = Pp_markdown.to_string
+
+let pp ppf (t : t) =
+  match t with
+  | None -> Fmt.pf ppf "No sections."
+  | Some t -> Fmt.of_to_string to_string ppf [ t ]

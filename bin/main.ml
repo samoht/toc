@@ -14,17 +14,24 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *)
 
-let main () file =
+let main () file print =
   let ic = open_in file in
-  let doc = Toc.expand (Omd.of_channel ic) in
-  close_in ic;
-  match doc with
-  | None -> Fmt.pr "No changes.\n%!"
-  | Some doc ->
-      let oc = open_out file in
-      output_string oc (Toc.to_string doc);
-      close_out oc;
-      Fmt.pr "%s has been updated.\n%!" file
+  let md = Omd.of_channel ic in
+  match print with
+  | true ->
+      let toc = Toc.v md in
+      Fmt.pr "%a%!" Toc.pp toc;
+      close_in ic
+  | false -> (
+      let doc = Toc.expand md in
+      close_in ic;
+      match doc with
+      | None -> Fmt.pr "No changes.\n%!"
+      | Some doc ->
+          let oc = open_out file in
+          output_string oc (Toc.to_string doc);
+          close_out oc;
+          Fmt.pr "%s has been updated.\n%!" file)
 
 let setup style_renderer level =
   Fmt_tty.setup_std_outputs ?style_renderer ();
@@ -38,6 +45,13 @@ let input_file =
   let doc = Arg.info ~doc:"Markdown file to expand." ~docv:"FILE" [] in
   Arg.(required @@ pos 0 (some file) None doc)
 
+let print =
+  let doc =
+    Arg.info ~doc:"Print the table of contents and exit." ~docv:"FILE"
+      [ "print"; "p" ]
+  in
+  Arg.(value @@ flag doc)
+
 let setup_log =
   Term.(const setup $ Fmt_cli.style_renderer () $ Logs_cli.level ())
 
@@ -47,5 +61,5 @@ let () =
     Cmd.info "toc" ~man
       ~doc:"Replace [toc] annotations in Markdown files with actual contents."
   in
-  let cmd = Cmd.v info Term.(const main $ setup_log $ input_file) in
+  let cmd = Cmd.v info Term.(const main $ setup_log $ input_file $ print) in
   exit (Cmd.eval cmd)
