@@ -25,7 +25,7 @@ val to_string : Omd.doc -> string
 type t
 (** The type for table of contents. *)
 
-val v : ?depth:int -> Omd.doc -> t
+val v : ?depth:int -> ?add_links:bool -> Omd.doc -> t
 (** [v md] is [md]'s table of contents. *)
 
 val pp : t Fmt.t

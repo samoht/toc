@@ -58,7 +58,7 @@ and skip_to_end ~toc : doc -> doc = function
       | Some End -> h :: replace ~toc t
       | _ -> skip_to_end ~toc t)
 
-module Id = struct
+module Linkify = struct
   (* Convert section title to a valid HTML ID. *)
   let title_to_id s =
     String.filter (fun c -> Char.Ascii.is_alphanum c || c = ' ') s
@@ -78,10 +78,12 @@ end
 
 type t = attributes block option
 
-let v ?depth doc : t =
+let v ?depth ?(add_links = true) doc : t =
   match Omd.toc ?depth ~start:[ 1 ] doc with
   | [] -> None
-  | [ toc ] -> Some (Id.block toc)
+  | [ toc ] ->
+      let toc = if add_links then Linkify.block toc else toc in
+      Some toc
   | _ -> assert false (* this is an invariant in Omd.toc *)
 
 let expand ?depth doc =

@@ -58,12 +58,12 @@ README.md has been updated.
 
 ```
 $ toc README.md -p
-*  [Usage](#Usage)
-   *  [First Use](#First-Use)
-   *  [Regenerate TOC](#Regenerate-TOC)
-   *  [Options](#Options)
-   *  [Multiple TOC](#Multiple-TOC)
-*  [License](#License)
+*  Usage
+   *  First Use
+   *  Regenerate TOC
+   *  Options
+   *  Multiple TOC
+*  License
 ```
 
 Use `toc --help` to see all the options.
