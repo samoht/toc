@@ -225,8 +225,8 @@ and add_bullet_list ?first_item_prefix ~prefix ~quote ~tight buf c = function
   | [] -> ()
   | hd :: tl ->
       let n, s =
-        let s = Printf.sprintf "%c  " c in
-        (3, s)
+        let s = Printf.sprintf "%c " c in
+        (2, s)
       in
       let add_list_item before_first_item_prefix bl =
         let first_item_prefix = before_first_item_prefix ^ s in

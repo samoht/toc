@@ -5,14 +5,14 @@ Github Markdown files.
 
 <div class="toc">
 
-*  [Usage](#Usage)
-   *  [First Use](#First-Use)
-   *  [Regenerate TOC](#Regenerate-TOC)
-   *  [Multiple TOC](#Multiple-TOC)
-   *  [Options](#Options)
-      *  [Print](#Print)
-      *  [Depth](#Depth)
-*  [License](#License)
+* [Usage](#Usage)
+  * [First Use](#First-Use)
+  * [Regenerate TOC](#Regenerate-TOC)
+  * [Multiple TOC](#Multiple-TOC)
+  * [Options](#Options)
+    * [Print](#Print)
+    * [Depth](#Depth)
+* [License](#License)
 
 </div>
 
@@ -33,14 +33,14 @@ This will replace any `[toc]` tokens by the file's table of contents instead.
 -[toc]
 +<div class="toc">
 +
-+*  [Usage](#Usage)
-+   *  [First Use](#First-Use)
-+   *  [Regenerate TOC](#Regenerate-TOC)
-+   *  [Multiple TOC](#Multiple-TOC)
-+   *  [Options](#Options)
-+      *  [Print](#Print)
-+      *  [Depth](#Depth)
-+*  [License](#License)
++* [Usage](#Usage)
++  * [First Use](#First-Use)
++  * [Regenerate TOC](#Regenerate-TOC)
++  * [Multiple TOC](#Multiple-TOC)
++  * [Options](#Options)
++    * [Print](#Print)
++    * [Depth](#Depth)
++* [License](#License)
 +
 +</div>
 ```
@@ -71,14 +71,14 @@ Use `toc --help` to see all the options.
 
 ```
 $ toc README.md -p
-*  Usage
-   *  First Use
-   *  Regenerate TOC
-   *  Multiple TOC
-   *  Options
-      *  Print
-      *  Depth
-*  License
+* Usage
+  * First Use
+  * Regenerate TOC
+  * Multiple TOC
+  * Options
+    * Print
+    * Depth
+* License
 ```
 
 #### Depth
@@ -87,8 +87,8 @@ Use `--depth` to control the depth of the table of contents.
 
 ```
 $ toc README.md -p -d 1
-*  Usage
-*  License
+* Usage
+* License
 ```
 
 ## License
