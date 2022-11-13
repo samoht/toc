@@ -19,7 +19,7 @@ file's table of contents instead.
 
 ```diff
 -[toc]
-+[//]: # (begin toc)
++<div class="toc"\>
 +
 +*  [Usage](#Usage)
 +   *  [First Use](#First-Use)
@@ -28,7 +28,7 @@ file's table of contents instead.
 +   *  [Multiple TOC](#Multiple-TOC)
 +*  [License](#License)
 +
-+[//]: # (end toc)
++\</div\>
 ```
 
 ### Regenerate TOC
