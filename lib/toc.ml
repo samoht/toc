@@ -40,6 +40,8 @@ let is_toc = function
   | Paragraph (_, x) when x = toc -> Some Toc
   | Html_block (_, x) when x = begin_toc -> Some Begin
   | Html_block (_, x) when x = end_toc -> Some End
+  | Html_block (_, x) when x = begin_toc ^ "\n" -> Some Begin
+  | Html_block (_, x) when x = end_toc ^ "\n" -> Some End
   | _ -> None
 
 let rec replace ~toc : doc -> doc = function
