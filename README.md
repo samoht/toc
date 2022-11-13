@@ -8,8 +8,10 @@ Github Markdown files.
 *  [Usage](#Usage)
    *  [First Use](#First-Use)
    *  [Regenerate TOC](#Regenerate-TOC)
-   *  [Options](#Options)
    *  [Multiple TOC](#Multiple-TOC)
+   *  [Options](#Options)
+      *  [Print](#Print)
+      *  [Depth](#Depth)
 *  [License](#License)
 
 </div>
@@ -54,7 +56,16 @@ $ toc README.md
 README.md has been updated.
 ```
 
+### Multiple TOC
+
+Use as many `[toc]` as you like to define multiple table of contents
+the same file.
+
 ### Options
+
+Use `toc --help` to see all the options.
+
+#### Print
 
 ```
 $ toc README.md -p
@@ -66,12 +77,15 @@ $ toc README.md -p
 *  License
 ```
 
-Use `toc --help` to see all the options.
+#### Depth
 
-### Multiple TOC
+Use `--depth` to control the depth of the table of contents.
 
-Use as many `[toc]` as you like to define multiple table of contents
-the same file.
+```
+$ toc README.md -p -d 1
+*  Usage
+*  License
+```
 
 ## License
 
