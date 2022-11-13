@@ -1,4 +1,4 @@
-# TOC - Manage tables of contents in Markdown files
+# TOC - Manage Tables of Contents in Markdown Files
 
 This repository contains a simple utility to manage tables of contents for
 Github Markdown files.
@@ -25,8 +25,7 @@ $ toc README.md
 README.md has been updated.
 ```
 
-This will replace any `[toc]` tokens automatically to include the
-file's table of contents instead.
+This will replace any `[toc]` tokens by the file's table of contents instead.
 
 ```diff
 -[toc]
@@ -44,9 +43,9 @@ file's table of contents instead.
 
 ### Regenerate TOC
 
-`toc` adds transparent markers at the beginning and end of the generated
-table of contents. The next call to `toc` will regenerate the table of
-contents from scratch.
+`toc` adds transparent `<div>` markers around the generated table of
+contents. Hence, the next call to `toc` will update the table
+correctly.
 
 To regenerate the TOC, run:
 
@@ -57,13 +56,23 @@ README.md has been updated.
 
 ### Options
 
-None at the moment. It's easy to add a way to control the start and depth for
-instance.
+```
+$ toc README.md -p
+*  [Usage](#Usage)
+   *  [First Use](#First-Use)
+   *  [Regenerate TOC](#Regenerate-TOC)
+   *  [Options](#Options)
+   *  [Multiple TOC](#Multiple-TOC)
+*  [License](#License)
+```
+
+Use `toc --help` to see all the options.
 
 ### Multiple TOC
 
-It is possible to define multiple table of contents the same file.
+Use as many `[toc]` as you like to define multiple table of contents
+the same file.
 
 ## License
 
-MIT
+MIT. See the [LICENSE file](./LICENSE.md).
