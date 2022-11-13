@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *)
 
-let main () file print =
+let main () file depth print =
   let ic = open_in file in
   let md = Omd.of_channel ic in
   match print with
@@ -23,7 +23,7 @@ let main () file print =
       Fmt.pr "%a%!" Toc.pp toc;
       close_in ic
   | false -> (
-      let doc = Toc.expand md in
+      let doc = Toc.expand ?depth md in
       close_in ic;
       match doc with
       | None -> Fmt.pr "No changes.\n%!"
@@ -45,10 +45,13 @@ let input_file =
   let doc = Arg.info ~doc:"Markdown file to expand." ~docv:"FILE" [] in
   Arg.(required @@ pos 0 (some file) None doc)
 
+let depth =
+  let doc = Arg.info ~doc:"The table of contents' depth." [ "depth"; "d" ] in
+  Arg.(value @@ opt (some int) None doc)
+
 let print =
   let doc =
-    Arg.info ~doc:"Print the table of contents and exit." ~docv:"FILE"
-      [ "print"; "p" ]
+    Arg.info ~doc:"Print the table of contents and exit." [ "print"; "p" ]
   in
   Arg.(value @@ flag doc)
 
@@ -61,5 +64,7 @@ let () =
     Cmd.info "toc" ~man
       ~doc:"Replace [toc] annotations in Markdown files with actual contents."
   in
-  let cmd = Cmd.v info Term.(const main $ setup_log $ input_file $ print) in
+  let cmd =
+    Cmd.v info Term.(const main $ setup_log $ input_file $ depth $ print)
+  in
   exit (Cmd.eval cmd)
