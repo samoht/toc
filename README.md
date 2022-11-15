@@ -93,4 +93,4 @@ $ toc README.md -p -d 1
 
 ## License
 
-MIT. See the [LICENSE file](./LICENSE.md).
+ISC. See the [LICENSE file](./LICENSE.md).

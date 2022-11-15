@@ -4,7 +4,7 @@
 (generate_opam_files true)
 
 (source (github samoht/toc))
-(license MIT)
+(license ISC)
 (authors "Thomas Gazagnaire")
 (maintainers "Thomas Gazagnaire")
 
