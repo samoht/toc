@@ -16,7 +16,7 @@
   ocaml
   dune
   (omd (>= 2.0.0~alpha2))
-  cmdliner
+  (cmdliner (>= 1.1.0))
   logs
   fmt
   astring))
