@@ -11,4 +11,12 @@
 (package
  (name toc)
  (synopsis "A generator of table of contents for Github Markdown files")
- (depends (alcotest :with-test) ocaml dune omd cmdliner logs fmt astring))
+ (depends
+  (alcotest :with-test)
+  ocaml
+  dune
+  (omd (>= 2.0.0~alpha2))
+  cmdliner
+  logs
+  fmt
+  astring))

@@ -2,6 +2,12 @@
 
 open Omd
 
+module Option = struct
+  let value o ~default = match o with Some v -> v | None -> default
+  let iter f = function Some v -> f v | None -> ()
+  let map f o = match o with None -> None | Some v -> Some (f v)
+end
+
 let nchar n buf c =
   let rec aux n =
     if n <= 0 then ()

@@ -10,7 +10,7 @@ depends: [
   "alcotest" {with-test}
   "ocaml"
   "dune" {>= "3.5"}
-  "omd"
+  "omd" {>= "2.0.0~alpha2"}
   "cmdliner"
   "logs"
   "fmt"
