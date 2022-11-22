@@ -51,7 +51,7 @@ let rec replace ~toc : doc -> doc = function
       | None -> h :: replace ~toc t
       | Some Toc -> html begin_toc :: toc :: html end_toc :: replace ~toc t
       | Some Begin -> h :: toc :: skip_to_end ~toc t
-      | Some End -> failwith "malformed toc markers")
+      | Some End -> h :: replace ~toc t)
 
 and skip_to_end ~toc : doc -> doc = function
   | [] -> []
